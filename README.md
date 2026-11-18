@@ -33,5 +33,7 @@ Requires [uv](https://docs.astral.sh/uv/).
 uv sync                      # install
 uv run pytest -q             # tests
 uv run ruff check .          # lint
-uv run pre-commit install    # git hooks
+uv run pre-commit install    # pre-commit + pre-push hooks
 ```
+
+`git push` runs lint and the full test suite first (pre-push hook) and is refused when either fails. The GitHub Actions workflow in `.github/workflows/ci.yml` runs the same checks when Actions is available.
